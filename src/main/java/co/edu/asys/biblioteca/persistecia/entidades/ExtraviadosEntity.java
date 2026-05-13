@@ -14,11 +14,18 @@ public class ExtraviadosEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
     @ManyToOne
     @JoinColumn(name = "id_libro")
-    private  ExtraviadosEntity Libro;
-    @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    private  LibroEntity Libro;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_usuario", nullable = false)
+    private UsuarioEntity usuario;
+
+
+
     private  ExtraviadosEntity Usuario;
     private int fechaReporte;
 
